@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stack & Queue Visualizer</title>
+  <link rel="stylesheet" href="css/stack-queue.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="concepts.html">Concepts</a>
+  <a href="array-visualizer.html">Array</a>
+  <a href="linked-list-visualizer.html">Linked List</a>
+  <a href="stack-queue-visualizer.html">Stack & Queue</a>
+</nav>
+
+<section class="visualizer-page">
+
+  <div class="command">
+    <label>Data Structure</label>
+    <select id="modeSelect">
+      <option value="stack">Stack (LIFO)</option>
+      <option value="queue">Queue (FIFO)</option>
+    </select>
+  </div>
+
+  <div class="command">
+    <label>Create</label>
+    <input id="valueInput" type="number" placeholder="value">
+    <button id="addBtn">Add</button>
+    <button id="randomBtn">Random</button>
+  </div>
+
+  <div class="command">
+    <label>Peek</label>
+    <button id="peekFrontBtn">Front</button>
+    <button id="peekBackBtn">Back</button>
+  </div>
+
+  <div class="command" id="stackOps">
+    <label>Stack</label>
+    <button id="pushBtn">Push</button>
+    <button id="popBtn">Pop</button>
+  </div>
+
+  <div class="command" id="queueOps" style="display:none">
+    <label>Queue</label>
+    <button id="enqueueBtn">Enqueue</button>
+    <button id="dequeueBtn">Dequeue</button>
+  </div>
+
+  <div class="command danger">
+    <label>Clear</label>
+    <button id="clearBtn">Empty</button>
+  </div>
+
+  <div class="structure-wrapper">
+    <div id="structureContainer" class="stack"></div>
+  </div>
+
+  <ul id="explanationPanel"></ul>
+
+</section>
+
+<script src="js/stack-queue-visualizer.js"></script>
+</body>
+</html>

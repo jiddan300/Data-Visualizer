@@ -2,46 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sorting Visualizer</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Algorithm Visualizer</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Optional but recommended font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Sorting Algorithm Visualizer</h1>
 
-  <div class="controls">
-    <div>
-      <label><input type="radio" name="dataMode" value="manual" checked> User Input</label>
-      <label><input type="radio" name="dataMode" value="random"> Random Data</label>
-      <input type="text" id="userInput" placeholder="e.g. 5 3 8 1 6">
-      <button id="generateBtn">Generate Bars</button>
-    </div>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="concepts.html">Concepts</a>
+  <a href="array-visualizer.html">Array</a>
+  <a href="linked-list-visualizer.html">Linked List</a>
+  <a href="stack-queue-visualizer.html">Stack & Queue</a>
+</nav>
 
-    <div>
-      <label>Speed:</label>
-      <input type="range" id="speedRange" min="50" max="1000" value="500">
-      <span id="speedValue">500 ms</span>
-    </div>
 
-    <div>
-      <label>Algorithm:</label>
-      <select id="algorithmSelect">
-        <option value="bubble">Bubble Sort</option>
-        <option value="selection">Selection Sort</option>
-        <option value="insertion">Insertion Sort</option>
-        <option value="merge">Merge Sort</option>
-        <option value="quick">Quick Sort</option>
-      </select>
-    </div>
+<section class="hero">
+  <h1>Learn Data Structures & Algorithms Visually</h1>
+  <p>Understand algorithms step by step using animations.</p>
 
-    <div class="buttons">
-      <button id="startBtn" disabled>Start Sorting</button>
-      <button id="resetBtn" disabled>Reset</button>
-    </div>
-  </div>
+  <a class="btn" href="concepts.html">Start Learning</a>
+  <a class="btn btn-secondary" href="array-visualizer.html">Choose Algorithm</a>
+</section>
 
-  <div id="container"></div>
-
-  <script src="script.js"></script>
 </body>
 </html>

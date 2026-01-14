@@ -1,0 +1,344 @@
+/* =========================
+   GLOBAL RESET & BASE THEME
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f8fafc;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+/* =========================
+   NAVIGATION (CONSISTENT)
+========================= */
+
+nav {
+  height: 56px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+}
+
+nav a {
+  color: #374151;
+  margin-right: 24px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+  background: transparent;
+}
+
+nav a:hover {
+  color: #2563eb;
+}
+
+nav a:focus {
+  color: #e50c04;
+  background: transparent;
+  outline: none;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button,
+.btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+button:hover,
+.btn:hover {
+  background: #1d4ed8;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================
+   HOME / HERO
+========================= */
+
+.hero {
+  max-width: 900px;
+  margin: 80px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #4b5563;
+}
+
+/* =========================
+   CONTENT PAGES (TEXT)
+========================= */
+
+.content {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+/* Headings rhythm */
+.content h1 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.content h2 {
+  font-size: 24px;
+  margin-top: 48px;
+  margin-bottom: 12px;
+}
+
+.content h3 {
+  font-size: 18px;
+  margin-top: 28px;
+  margin-bottom: 8px;
+}
+
+.content h4 {
+  font-size: 15px;
+  margin-top: 18px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* Text spacing */
+.content p {
+  margin: 8px 0 12px;
+}
+
+.content ul {
+  margin: 8px 0 16px;
+  padding-left: 20px;
+}
+
+.content li {
+  margin-bottom: 6px;
+}
+
+/* Section divider */
+.content hr {
+  margin: 48px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* =========================
+   PSEUDOCODE BLOCKS
+========================= */
+
+pre.pseudocode {
+  background: #f1f5f9;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-x: auto;
+  margin: 12px 0 24px;
+}
+
+/* =========================
+   VISUALIZER PAGE
+========================= */
+
+.visualizer-page {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ===== CONTROL PANEL ===== */
+
+.controls {
+  display: flex;
+  background: #ffffff;
+  padding: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  margin-bottom: 16px;
+}
+
+/* Two-row control layout */
+.controls-two-rows {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.control-row-actions {
+  padding-top: 8px;
+  border-top: 1px dashed #e5e7eb;
+}
+
+/* Inputs */
+.controls label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.controls input[type="text"],
+.controls input[type="number"],
+.controls select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+/* Speed slider */
+.speed-control {
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* =========================
+   VISUALIZER CANVAS
+========================= */
+
+#visualizer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 340px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  gap: 4px;
+  padding: 10px;
+}
+
+/* =========================
+   BARS
+========================= */
+
+.bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bar {
+  width: 28px;
+  background: #2563eb;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.25s ease;
+}
+
+.bar-value {
+  font-size: 12px;
+  margin-top: 4px;
+  color: #374151;
+}
+
+/* ===== BAR STATES ===== */
+
+.active {
+  background: #dc2626 !important;
+}
+
+.found {
+  background: #16a34a !important;
+}
+
+.not-found {
+  background: #dc2626 !important;
+}
+
+/* Binary search markers */
+.low {
+  background: #3b82f6 !important;
+}
+
+.mid {
+  background: #f59e0b !important;
+}
+
+.high {
+  background: #7c3aed !important;
+}
+
+/* =========================
+   EXPLANATION PANEL
+========================= */
+
+.explanation-list {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+  max-height: 180px;
+  overflow-y: auto;
+  list-style: none;
+  font-size: 14px;
+}
+
+.explanation-list li {
+  padding: 4px 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.explanation-list li:last-child {
+  border-bottom: none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .controls {
+    gap: 8px;
+  }
+
+  .speed-control {
+    margin-left: 0;
+  }
+
+  #visualizer {
+    height: 280px;
+  }
+
+  .bar {
+    width: 22px;
+  }
+}

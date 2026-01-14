@@ -1,0 +1,117 @@
+/* ===== Commands ===== */
+
+.command {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.command.danger {
+  background: #fff1f2;
+  border-color: #fecaca;
+}
+
+.cmd-label {
+  font-weight: 600;
+}
+
+.command input,
+.command select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+.index-input {
+  width: 80px;
+}
+
+/* ===== Speed ===== */
+
+.speed-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 16px;
+  padding: 10px 14px;
+  background: #f1f5f9;
+  border-radius: 8px;
+}
+
+#speedSlider {
+  width: 220px;
+}
+
+/* ===== Visualizer ===== */
+
+.list-wrapper {
+  overflow-x: auto;
+}
+
+#linkedListContainer {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+/* ===== Nodes ===== */
+
+.node {
+  display: flex;
+  border: 3px solid #2563eb;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.node.traversing {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 4px rgba(245,158,11,0.35);
+  transform: scale(1.05);
+}
+
+.node.target {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239,68,68,0.35);
+}
+
+.node.inserted {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34,197,94,0.35);
+}
+
+.node-prev,
+.node-data,
+.node-next {
+  padding: 10px;
+  text-align: center;
+}
+
+.node-prev,
+.node-next {
+  background: #e5e7eb;
+  font-size: 12px;
+}
+
+.node-data {
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+}
+
+.arrow {
+  font-size: 22px;
+}
+
+.null {
+  color: #6b7280;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Linked List Visualizer</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/linked-list.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="concepts.html">Concepts</a>
+  <a href="array-visualizer.html">Array</a>
+  <a href="linked-list-visualizer.html">Linked List</a>
+  <a href="stack-queue-visualizer.html">Stack & Queue</a>
+</nav>
+
+
+<section class="visualizer-page">
+
+  <!-- LIST TYPE -->
+  <div class="command">
+    <span class="cmd-label">List Type</span>
+    <select id="listType" onchange="switchListType()">
+      <option value="singly">Singly Linked List</option>
+      <option value="doubly">Doubly Linked List</option>
+    </select>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+
+    <!-- INSERT -->
+    <div class="command">
+      <span class="cmd-label">Insert</span>
+      <input type="number" id="valueInput" placeholder="value" />
+      <span class="cmd-text">at</span>
+
+      <select id="insertPosition" onchange="toggleInsertIndex()">
+        <option value="head">head</option>
+        <option value="tail">tail</option>
+        <option value="index">index</option>
+      </select>
+
+      <input type="number" id="indexInput" placeholder="i" class="index-input" disabled />
+      <button onclick="handleInsert()">Go</button>
+    </div>
+
+    <!-- REMOVE -->
+    <div class="command danger">
+      <span class="cmd-label">Remove</span>
+      <span class="cmd-text">at</span>
+
+      <select id="removePosition" onchange="toggleRemoveIndex()">
+        <option value="head">head</option>
+        <option value="tail">tail</option>
+        <option value="index">index</option>
+      </select>
+
+      <input type="number" id="removeIndexInput" placeholder="i" class="index-input" disabled />
+      <button onclick="handleRemove()">Go</button>
+    </div>
+
+    <!-- BULK -->
+    <div class="command">
+      <span class="cmd-label">Bulk</span>
+      <input type="text" id="bulkInput" placeholder="10, 20, 30" />
+      <button onclick="addList()">Add</button>
+      <button onclick="addRandomList()">Random</button>
+    </div>
+
+    <!-- CLEAR -->
+    <div class="command danger">
+      <span class="cmd-label">Clear</span>
+      <button onclick="clearAll()">Empty List</button>
+    </div>
+
+  </div>
+
+  <!-- SPEED -->
+  <div class="speed-row">
+    <span class="speed-label">Animation Speed</span>
+    <span class="speed-text">Slow</span>
+    <input type="range" id="speedSlider" min="50" max="200" value="120" />
+    <span class="speed-text">Fast</span>
+  </div>
+
+  <!-- VISUALIZER -->
+  <div class="list-wrapper">
+    <div id="linkedListContainer"></div>
+  </div>
+
+  <!-- LOG -->
+  <ul id="explanationPanel" class="explanation-list"></ul>
+
+</section>
+
+<script src="js/linked-list-visualizer.js"></script>
+</body>
+</html>

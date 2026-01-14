@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Algorithm Visualizer</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="concepts.html">Concepts</a>
+  <a href="array-visualizer.html">Array</a>
+  <a href="linked-list-visualizer.html">Linked List</a>
+  <a href="stack-queue-visualizer.html">Stack & Queue</a>
+</nav>
+
+<section class="visualizer-page">
+
+  <!-- ===== CONTROL PANEL (TWO ROWS) ===== -->
+  <div class="controls controls-two-rows">
+
+    <!-- ROW 1: SETUP -->
+    <div class="control-row">
+      <label>
+        Type:
+        <select id="algorithmType">
+          <option value="sorting">Sorting</option>
+          <option value="searching">Searching</option>
+        </select>
+      </label>
+
+      <label>
+        Algorithm:
+        <select id="algorithmSelect">
+          <option value="bubble">Bubble Sort</option>
+          <option value="selection">Selection Sort</option>
+          <option value="insertion">Insertion Sort</option>
+          <option value="merge">Merge Sort</option>
+          <option value="quick">Quick Sort</option>
+        </select>
+      </label>
+
+      <label id="targetWrapper" style="display:none;">
+        Target:
+        <input type="number" id="searchTarget" placeholder="e.g. 25">
+      </label>
+
+      <label>
+        Data:
+        <input type="text" id="manualInput" placeholder="e.g. 10, 25, 7, 42">
+      </label>
+
+      <button onclick="applyManualInput()">Apply</button>
+      <button onclick="generateArray()">Random</button>
+    </div>
+
+    <!-- ROW 2: CONTROLS -->
+    <div class="control-row control-row-actions">
+      <button onclick="play()">Play</button>
+      <button onclick="pause()">Pause</button>
+      <button onclick="step()">Step</button>
+      <button onclick="reset()">Reset</button>
+
+      <label class="speed-control">
+        Speed →
+        <input type="range" min="50" max="200" value="150" id="speed">
+        Faster
+      </label>
+    </div>
+
+  </div>
+
+  <!-- ===== VISUALIZATION ===== -->
+  <div id="visualizer"></div>
+
+  <!-- ===== EXPLANATION LOG ===== -->
+  <ul id="explanationPanel" class="explanation-list"></ul>
+
+</section>
+
+<!-- SORTING -->
+<script src="js/algorithms/bubble-sort.js"></script>
+<script src="js/algorithms/selection-sort.js"></script>
+<script src="js/algorithms/insertion-sort.js"></script>
+<script src="js/algorithms/merge-sort.js"></script>
+<script src="js/algorithms/quick-sort.js"></script>
+
+<!-- SEARCHING -->
+<script src="js/algorithms/linear-search.js"></script>
+<script src="js/algorithms/binary-search.js"></script>
+<script src="js/algorithms/jump-search.js"></script>
+
+<!-- ENGINE -->
+<script src="js/array-visualizer.js"></script>
+
+</body>
+</html>

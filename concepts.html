@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Concepts: Data Structures & Algorithms</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    pre.pseudocode {
+      background: #f1f5f9;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 14px;
+      overflow-x: auto;
+      margin: 12px 0 24px;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="concepts.html">Concepts</a>
+  <a href="array-visualizer.html">Array</a>
+  <a href="linked-list-visualizer.html">Linked List</a>
+  <a href="stack-queue-visualizer.html">Stack & Queue</a>
+</nav>
+
+
+<section class="content">
+
+  <h1>Concepts: Data Structures & Algorithms</h1>
+
+  <p>
+    In computer science, <strong>data structures</strong> define how data is organized and stored,
+    while <strong>algorithms</strong> define step-by-step procedures used to process that data.
+    Studying both together helps explain how algorithms behave and why certain approaches
+    are more suitable for specific problems.
+  </p>
+
+
+  <!-- ================= ARRAY ================= -->
+
+  <h2>1. Array</h2>
+
+  <p>
+    An <strong>array</strong> is a linear data structure that stores elements in contiguous
+    memory locations. Each element can be accessed directly using its index.
+  </p>
+
+  <p>
+    Arrays are simple and efficient for reading data, but their fixed size makes
+    insertion and deletion operations less flexible.
+  </p>
+
+  <h3>Searching Algorithms</h3>
+
+  <h4>Linear Search</h4>
+  <p>
+    Linear Search examines each element sequentially until the target value is found
+    or all elements have been examined.
+  </p>
+
+  <pre class="pseudocode">
+    for i = 0 to n - 1
+      if A[i] == target
+        return i
+    return -1
+  </pre>
+
+  <h4>Binary Search (Sorted Array)</h4>
+  <p>
+    Binary Search repeatedly divides the search range in half by comparing
+    the target value with the middle element.
+    This algorithm requires the array to be sorted.
+  </p>
+
+  <pre class="pseudocode">
+    low = 0
+    high = n - 1
+    while low <= high
+      mid = (low + high) / 2
+      if A[mid] == target
+        return mid
+      else if A[mid] < target
+        low = mid + 1
+      else
+        high = mid - 1
+    return -1
+  </pre>
+
+  <h4>Jump Search</h4>
+  <p>
+    Jump Search advances through the array in fixed-size steps to locate
+    a possible range, then performs a linear search within that range.
+    This algorithm also requires sorted data.
+  </p>
+
+  <pre class="pseudocode">
+    step = √n
+    prev = 0
+    while A[min(step, n) - 1] < target
+      prev = step
+      step = step + √n
+    for i = prev to min(step, n)
+      if A[i] == target
+        return i
+    return -1
+  </pre>
+
+  <h3>Sorting Algorithms</h3>
+
+  <h4>Bubble Sort</h4>
+  <p>
+    Bubble Sort repeatedly compares adjacent elements and swaps them
+    if they are in the wrong order, causing larger elements to move
+    toward the end of the array.
+  </p>
+
+  <pre class="pseudocode">
+    for i = 0 to n - 1
+      for j = 0 to n - i - 2
+        if A[j] > A[j + 1]
+          swap A[j] and A[j + 1]
+  </pre>
+
+  <h4>Selection Sort</h4>
+  <p>
+    Selection Sort divides the array into a sorted and an unsorted part.
+    It repeatedly selects the smallest element from the unsorted section
+    and moves it to the sorted section.
+  </p>
+
+  <pre class="pseudocode">
+    for i = 0 to n - 1
+      minIndex = i
+      for j = i + 1 to n - 1
+        if A[j] < A[minIndex]
+          minIndex = j
+      swap A[i] and A[minIndex]
+  </pre>
+
+  <h4>Insertion Sort</h4>
+  <p>
+    Insertion Sort builds the sorted array one element at a time by
+    inserting each new element into its correct position.
+  </p>
+
+  <pre class="pseudocode">
+    for i = 1 to n - 1
+      key = A[i]
+      j = i - 1
+      while j >= 0 and A[j] > key
+        A[j + 1] = A[j]
+        j = j - 1
+      A[j + 1] = key
+  </pre>
+
+  <h4>Merge Sort</h4>
+  <p>
+    Merge Sort uses a divide-and-conquer approach by splitting the array
+    into smaller subarrays, sorting them, and merging them back together.
+  </p>
+
+  <pre class="pseudocode">
+    function mergeSort(A)
+      if length(A) <= 1
+        return A
+      mid = length(A) / 2
+      left = mergeSort(A[0..mid])
+      right = mergeSort(A[mid..end])
+      return merge(left, right)
+  </pre>
+
+  <h4>Quick Sort</h4>
+  <p>
+    Quick Sort selects a pivot element and rearranges the array so that
+    smaller elements come before the pivot and larger elements come after it.
+  </p>
+
+  <pre class="pseudocode">
+    function quickSort(A, low, high)
+      if low < high
+        pivotIndex = partition(A, low, high)
+        quickSort(A, low, pivotIndex - 1)
+        quickSort(A, pivotIndex + 1, high)
+  </pre>
+
+  <hr>
+
+  <!-- ================= LINKED LIST ================= -->
+
+  <h2>2. Linked List</h2>
+
+  <p>
+    A <strong>linked list</strong> is a linear data structure where each element
+    is stored in a node. Each node contains a data value and a reference
+    (or pointer) to the next node in the sequence.
+  </p>
+
+  <p>
+    Unlike arrays, linked lists do not require contiguous memory locations.
+    This allows efficient insertion and deletion of elements without shifting data.
+  </p>
+
+  <p>
+    Common types of linked lists include singly linked lists, doubly linked lists,
+    and circular linked lists.
+  </p>
+
+  <hr>
+
+  <!-- ================= STACK ================= -->
+
+  <h2>3. Stack</h2>
+
+  <p>
+    A <strong>stack</strong> is a linear data structure that follows the
+    <strong>Last In, First Out (LIFO)</strong> principle.
+    The last element added to the stack is the first one to be removed.
+  </p>
+
+  <p>
+    All operations on a stack occur at one end, known as the top.
+    Common stack operations include push (add), pop (remove), and peek (view top element).
+  </p>
+
+  <p>
+    Stacks are widely used in function calls, expression evaluation,
+    undo/redo operations, and depth-first search algorithms.
+  </p>
+
+  <hr>
+
+  <!-- ================= QUEUE ================= -->
+
+  <h2>4. Queue</h2>
+
+  <p>
+    A <strong>queue</strong> is a linear data structure that follows the
+    <strong>First In, First Out (FIFO)</strong> principle.
+    The first element added is the first one to be removed.
+  </p>
+
+  <p>
+    Elements are inserted at the rear of the queue and removed from the front.
+    This behavior makes queues suitable for scheduling tasks and managing shared resources.
+  </p>
+
+  <p>
+    Queues are commonly used in breadth-first search, CPU scheduling,
+    and data buffering scenarios.
+  </p>
+
+  <hr>
+
+  <!-- ================= TREE & GRAPH ================= -->
+
+  <h2>5. Tree and Graph</h2>
+
+  <p>
+    <strong>Trees</strong> and <strong>graphs</strong> are non-linear data structures
+    used to represent hierarchical and network-based relationships.
+  </p>
+
+  <h3>Tree</h3>
+  <p>
+    A tree consists of nodes connected by edges, starting from a root node.
+    Each node may have zero or more child nodes.
+    Trees are commonly used to represent hierarchical data such as file systems
+    and organizational structures.
+  </p>
+
+  <h3>Graph</h3>
+  <p>
+    A graph consists of vertices (nodes) and edges (connections).
+    Graphs may be directed or undirected and can represent real-world systems
+    such as road networks and social networks.
+  </p>
+
+  <h3>Traversal Algorithms</h3>
+
+  <h4>Breadth-First Search (BFS)</h4>
+  <p>
+    Breadth-First Search explores nodes level by level,
+    visiting all neighbors of a node before moving deeper.
+    It is typically implemented using a queue.
+  </p>
+
+  <h4>Depth-First Search (DFS)</h4>
+  <p>
+    Depth-First Search explores as far as possible along each branch
+    before backtracking.
+    It is commonly implemented using recursion or a stack.
+  </p>
+
+</section>
+
+</body>
+</html>
