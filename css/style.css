@@ -97,77 +97,6 @@ button:disabled {
 }
 
 /* =========================
-   CONTENT PAGES (TEXT)
-========================= */
-
-.content {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
-
-/* Headings rhythm */
-.content h1 {
-  font-size: 32px;
-  margin-bottom: 16px;
-}
-
-.content h2 {
-  font-size: 24px;
-  margin-top: 48px;
-  margin-bottom: 12px;
-}
-
-.content h3 {
-  font-size: 18px;
-  margin-top: 28px;
-  margin-bottom: 8px;
-}
-
-.content h4 {
-  font-size: 15px;
-  margin-top: 18px;
-  margin-bottom: 6px;
-  font-weight: 600;
-}
-
-/* Text spacing */
-.content p {
-  margin: 8px 0 12px;
-}
-
-.content ul {
-  margin: 8px 0 16px;
-  padding-left: 20px;
-}
-
-.content li {
-  margin-bottom: 6px;
-}
-
-/* Section divider */
-.content hr {
-  margin: 48px 0;
-  border: none;
-  border-top: 1px solid #e5e7eb;
-}
-
-/* =========================
-   PSEUDOCODE BLOCKS
-========================= */
-
-pre.pseudocode {
-  background: #f1f5f9;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  padding: 12px;
-  font-size: 14px;
-  line-height: 1.5;
-  overflow-x: auto;
-  margin: 12px 0 24px;
-}
-
-/* =========================
    VISUALIZER PAGE
 ========================= */
 
@@ -183,6 +112,7 @@ pre.pseudocode {
   display: flex;
   background: #ffffff;
   padding: 14px;
+  gap: 14px;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.05);
@@ -223,78 +153,60 @@ pre.pseudocode {
   font-size: 14px;
 }
 
-/* Speed slider */
-.speed-control {
-  margin-left: auto;
-  font-size: 14px;
-  font-weight: 500;
-}
+/* ===== Commands ===== */
 
-/* =========================
-   VISUALIZER CANVAS
-========================= */
-
-#visualizer {
+.command {
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  height: 340px;
-  background: #ffffff;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #f9fafb;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  margin-bottom: 16px;
-  gap: 4px;
-  padding: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
-/* =========================
-   BARS
-========================= */
+.command.danger {
+  background: #fff1f2;
+  border-color: #fecaca;
+}
 
-.bar-container {
+.cmd-label {
+  font-weight: 600;
+}
+
+.command input,
+.command select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+
+.index-input {
+  width: 80px;
+}
+
+.command button {
+  padding: 6px 14px;
+  cursor: pointer;
+}
+
+/* ===== Speed ===== */
+
+.speed-row {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+  padding: 10px 14px;
+  background: #f1f5f9;
+  border-radius: 8px;
 }
 
-.bar {
-  width: 28px;
-  background: #2563eb;
-  border-radius: 4px 4px 0 0;
-  transition: height 0.25s ease;
-}
-
-.bar-value {
-  font-size: 12px;
-  margin-top: 4px;
-  color: #374151;
-}
-
-/* ===== BAR STATES ===== */
-
-.active {
-  background: #dc2626 !important;
-}
-
-.found {
-  background: #16a34a !important;
-}
-
-.not-found {
-  background: #dc2626 !important;
-}
-
-/* Binary search markers */
-.low {
-  background: #3b82f6 !important;
-}
-
-.mid {
-  background: #f59e0b !important;
-}
-
-.high {
-  background: #7c3aed !important;
+#speedSlider {
+  width: 220px;
 }
 
 /* =========================
@@ -321,24 +233,3 @@ pre.pseudocode {
   border-bottom: none;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 768px) {
-  .controls {
-    gap: 8px;
-  }
-
-  .speed-control {
-    margin-left: 0;
-  }
-
-  #visualizer {
-    height: 280px;
-  }
-
-  .bar {
-    width: 22px;
-  }
-}

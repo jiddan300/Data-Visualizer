@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Algorithm Visualizer</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/array.css" />
+
 
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,14 +68,15 @@
       <button onclick="pause()">Pause</button>
       <button onclick="step()">Step</button>
       <button onclick="reset()">Reset</button>
-
-      <label class="speed-control">
-        Speed →
-        <input type="range" min="50" max="200" value="150" id="speed">
-        Faster
-      </label>
     </div>
-
+    
+    <!-- SPEED -->
+    <div class="speed-row">
+      <span class="speed-label">Animation Speed</span>
+      <span class="speed-text">Slow</span>
+      <input type="range" id="speedSlider" min="50" max="200" value="120" />
+      <span class="speed-text">Fast</span>
+    </div>
   </div>
 
   <!-- ===== VISUALIZATION ===== -->

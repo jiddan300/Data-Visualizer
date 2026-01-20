@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <title>Stack & Queue Visualizer</title>
 
+  <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/stack-queue.css" />
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -18,7 +20,6 @@
 </nav>
 
 <section class="visualizer-page">
-
   <!-- MODE -->
   <div class="command">
     <span class="cmd-label">Data Structure</span>
@@ -28,39 +29,42 @@
     </select>
   </div>
 
-  <!-- CREATE -->
-  <div class="command">
-    <span class="cmd-label">Create</span>
-    <input type="number" id="valueInput" placeholder="value" />
-    <button onclick="handleCreate()">Add</button>
-    <button onclick="createRandom()">Random</button>
-  </div>
+  <div class="controls">  
+    <!-- CREATE -->
+    <div class="command">
+      <span class="cmd-label">Create</span>
+      <input type="number" id="valueInput" placeholder="value" />
+      <button onclick="handleCreate()">Add</button>
+      <button onclick="createRandom()">Random</button>
+    </div>
 
-  <!-- PEEK -->
-  <div class="command">
-    <span class="cmd-label">Peek</span>
-    <button onclick="peekFront()">Front</button>
-    <button onclick="peekBack()">Back</button>
-  </div>
+    <!-- PEEK -->
+    <div class="command">
+      <span class="cmd-label">Peek</span>
+      <button onclick="peekFront()">Front</button>
+      <button onclick="peekBack()">Back</button>
+    </div>
 
-  <!-- STACK OPS -->
-  <div class="command" id="stackOps">
-    <span class="cmd-label">Stack</span>
-    <button onclick="handlePush()">Push</button>
-    <button onclick="handlePop()">Pop</button>
-  </div>
+    <!-- STACK OPS -->
+    <div class="command" id="stackOps">
+      <span class="cmd-label">Stack</span>
+      <button onclick="handlePush()">Push</button>
+      <button onclick="handlePop()">Pop</button>
+    </div>
 
-  <!-- QUEUE OPS -->
-  <div class="command" id="queueOps" style="display:none">
-    <span class="cmd-label">Queue</span>
-    <button onclick="handleEnqueue()">Enqueue</button>
-    <button onclick="handleDequeue()">Dequeue</button>
-  </div>
+    <!-- QUEUE OPS -->
+    <div class="command" id="queueOps" style="display:none">
+      <span class="cmd-label">Queue</span>
+      <button onclick="handleEnqueue()">Enqueue</button>
+      <button onclick="handleDequeue()">Dequeue</button>
+    </div>
 
-  <!-- CLEAR -->
-  <div class="command danger">
-    <span class="cmd-label">Clear</span>
-    <button onclick="clearAll()">Empty</button>
+    <!-- CLEAR -->
+    <div class="command danger">
+      <span class="cmd-label">Clear</span>
+      <button onclick="clearAll()">Empty</button>
+    </div>
+
   </div>
 
   <!-- SPEED -->
@@ -70,7 +74,7 @@
     <input type="range" id="speedSlider" min="50" max="200" value="120" />
     <span class="speed-text">Fast</span>
   </div>
-
+  
   <!-- VISUAL -->
   <div class="structure-wrapper">
     <div id="structureContainer" class="stack"></div>

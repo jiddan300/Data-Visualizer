@@ -1,0 +1,67 @@
+
+/* =========================
+   VISUALIZER CANVAS
+========================= */
+
+#visualizer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 340px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  gap: 4px;
+  padding: 10px;
+}
+
+/* =========================
+   BARS
+========================= */
+
+.bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bar {
+  width: 28px;
+  background: #2563eb;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.25s ease;
+}
+
+.bar-value {
+  font-size: 12px;
+  margin-top: 4px;
+  color: #374151;
+}
+
+/* ===== BAR STATES ===== */
+
+.active {
+  background: #dc2626 !important;
+}
+
+.found {
+  background: #16a34a !important;
+}
+
+.not-found {
+  background: #dc2626 !important;
+}
+
+/* Binary search markers */
+.low {
+  background: #3b82f6 !important;
+}
+
+.mid {
+  background: #f59e0b !important;
+}
+
+.high {
+  background: #7c3aed !important;
+}

@@ -164,7 +164,7 @@ function render(step) {
 ======================= */
 
 function getDelay() {
-  const speed = document.getElementById("speed").value;
+  const speed = document.getElementById("speedSlider").value;
   return 2100 - speed * 10;
 }
 
@@ -222,7 +222,7 @@ function reset() {
    LIVE SPEED UPDATE
 ======================= */
 
-document.getElementById("speed").addEventListener("input", () => {
+document.getElementById("speedSlider").addEventListener("input", () => {
   if (playing) {
     startTimer();
   }
