@@ -1,0 +1,113 @@
+/* ===== Tree Canvas ===== */
+
+#treeCanvas {
+  width: 100%;
+  height: 520px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+/* ===== Tree Canvas Wrapper ===== */
+
+.tree-canvas-wrapper {
+  width: 100%;
+  height: 520px;            /* visible viewport */
+  overflow: auto;           /* enable scrolling */
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+/* ===== SVG Canvas ===== */
+
+#treeCanvas {
+  min-width: 1000px;        /* allow growth */
+  min-height: 600px;
+  background: #ffffff;
+}
+
+
+/* ===== Edges ===== */
+
+.tree-edge {
+  stroke: #9ca3af;
+  stroke-width: 2;
+  transition:
+    x1 0.4s ease,
+    y1 0.4s ease,
+    x2 0.4s ease,
+    y2 0.4s ease;
+}
+
+/* ===== Nodes ===== */
+
+.tree-node {
+  transition: opacity 0.3s ease;
+}
+
+.tree-node circle {
+  fill: #2563eb;
+  stroke: #1e40af;
+  stroke-width: 2;
+  transition: r 0.3s ease;
+}
+
+.tree-node text {
+  fill: white;
+  font-size: 14px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* ===== Comparison Highlights ===== */
+
+.tree-node.traversal circle {
+  stroke: #f59e0b;
+  stroke-width: 5;
+  filter: drop-shadow(0 0 8px rgba(245,158,11,0.7));
+}
+
+.tree-node.compare-left circle {
+  stroke: #2563eb;
+  stroke-width: 4;
+  filter: drop-shadow(0 0 6px rgba(37,99,235,0.6));
+}
+
+.tree-node.compare-right circle {
+  stroke: #f97316;
+  stroke-width: 4;
+  filter: drop-shadow(0 0 6px rgba(249,115,22,0.6));
+}
+
+.tree-node.compare-match circle {
+  stroke: #22c55e;
+  stroke-width: 4;
+  filter: drop-shadow(0 0 6px rgba(34,197,94,0.6));
+}
+
+/* ===== AVL Info ===== */
+/* AVL extra info text */
+.avl-info {
+  fill: #374151;              /* dark gray */
+  font-size: 12px;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+/* ===== FORCE AVL INFO VISIBILITY ===== */
+.tree-node text.avl-info {
+  fill: #1f2937 !important;  /* dark slate */
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* Optional: small background pill for readability */
+.tree-node .avl-info-bg {
+  fill: rgba(255, 255, 255, 0.85);
+  rx: 4;
+  ry: 4;
+}
+
+

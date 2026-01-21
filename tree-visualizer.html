@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tree Visualizer</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/tree.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="concepts.html">Concepts</a>
+  <a href="array-visualizer.html">Array</a>
+  <a href="linked-list-visualizer.html">Linked List</a>
+  <a href="stack-queue-visualizer.html">Stack & Queue</a>
+  <a href="tree-visualizer.html">Tree</a>
+</nav>
+
+<section class="visualizer-page">
+
+  <!-- MODE -->
+  <div class="command">
+    <span class="cmd-label">Tree Type</span>
+    <select id="treeModeSelect" onchange="switchTreeMode()">
+      <option value="binary">Binary Tree</option>
+      <option value="bst">Binary Search Tree (BST)</option>
+      <option value="avl">AVL Tree</option>
+    </select>
+  </div>
+
+  <div class="command" id="avlToggle" style="display:none">
+    <label>
+      <input type="checkbox" id="showAVLInfo" checked />
+      Show AVL Info (height & balance)
+    </label>
+  </div>
+
+  <div class="controls">
+
+    <!-- INSERT -->
+    <div class="command">
+      <span class="cmd-label">Insert</span>
+      <input type="number" id="insertInput" placeholder="value" />
+      <button onclick="handleInsert()">Insert</button>
+      <button onclick="handleInsertRandom()">Random</button>
+    </div>
+
+    <!-- DELETE -->
+    <div class="command">
+      <span class="cmd-label">Delete</span>
+      <input type="number" id="deleteInput" placeholder="value" />
+      <button onclick="handleDelete()">Delete</button>
+    </div>
+
+    <!-- TRAVERSAL -->
+    <div class="command">
+      <span class="cmd-label">Traversal</span>
+      <button onclick="traverse('inorder')">Inorder</button>
+      <button onclick="traverse('preorder')">Preorder</button>
+      <button onclick="traverse('postorder')">Postorder</button>
+      <button onclick="traverse('levelorder')">Level-Order</button>
+    </div>
+
+    <!-- CLEAR -->
+    <div class="command danger">
+      <span class="cmd-label">Clear</span>
+      <button onclick="clearTree()">Clear Tree</button>
+    </div>
+
+  </div>
+
+  <!-- SPEED -->
+  <div class="speed-row">
+    <span class="speed-label">Animation Speed</span>
+    <span class="speed-text">Slow</span>
+    <input type="range" id="speedSlider" min="50" max="200" value="120" />
+    <span class="speed-text">Fast</span>
+  </div>
+
+  <!-- CANVAS -->
+  <div class="tree-canvas-wrapper">
+    <svg id="treeCanvas"></svg>
+  </div>
+
+  <!-- LOG -->
+  <ul id="explanationPanel" class="explanation-list"></ul>
+
+</section>
+
+<script src="js/tree-visualizer.js"></script>
+</body>
+</html>
