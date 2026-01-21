@@ -203,6 +203,39 @@ async function traverse(type) {
   isAnimating = false;
 }
 
+function inorder(node, result) {
+  if (!node) return;
+  inorder(node.left, result);
+  result.push(node);
+  inorder(node.right, result);
+}
+
+function preorder(node, result) {
+  if (!node) return;
+  result.push(node);
+  preorder(node.left, result);
+  preorder(node.right, result);
+}
+
+function postorder(node, result) {
+  if (!node) return;
+  postorder(node.left, result);
+  postorder(node.right, result);
+  result.push(node);
+}
+
+
+function levelOrder(root, result) {
+  const queue = [root];
+  while (queue.length) {
+    const node = queue.shift();
+    result.push(node);
+    if (node.left) queue.push(node.left);
+    if (node.right) queue.push(node.right);
+  }
+}
+
+
 /* =====================================================
    TREE LOGIC (STABLE)
 ===================================================== */
@@ -468,6 +501,8 @@ function drawNodes(node) {
 ===================================================== */
 
 function clearTree() {
+  if (isAnimating) return;
+
   root = null;
   traversalNode = null;
   canvas.innerHTML = "";
