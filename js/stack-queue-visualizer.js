@@ -1,5 +1,7 @@
-let mode = "stack"; // stack | queue
+let mode = "stack";
 let items = [];
+let previewValue = null;
+let enteringIndex = null;
 
 let isAnimating = false;
 let animationDelay = 400;
@@ -7,6 +9,10 @@ let animationDelay = 400;
 const container = document.getElementById("structureContainer");
 const logPanel = document.getElementById("explanationPanel");
 const speedSlider = document.getElementById("speedSlider");
+
+const listInput = document.getElementById("listInput");
+const stackValueInput = document.getElementById("opValueInput");
+const queueValueInput = document.getElementById("opValueInputQueue");
 
 speedSlider.addEventListener("input", () => {
   animationDelay = 800 - ((speedSlider.value - 50) / 150) * 700;
@@ -57,23 +63,68 @@ function render(activeIndex = null) {
       box.classList.add("highlight");
     }
 
+    if (index === enteringIndex) {
+      box.classList.add("enter");
+      requestAnimationFrame(() => {
+        box.classList.add("enter-active");
+        box.classList.remove("enter");
+      });
+    }
+
     container.appendChild(box);
+  });
+
+  if (previewValue !== null) {
+    const previewBox = document.createElement("div");
+    previewBox.className = "box preview";
+    previewBox.textContent = previewValue;
+    container.appendChild(previewBox);
+  }
+}
+
+/* ===== Remove Animation ===== */
+
+function animateOut(index) {
+  return new Promise(resolve => {
+    const box = container.children[index];
+    if (!box) return resolve();
+
+    box.classList.add("exit");
+    requestAnimationFrame(() => {
+      box.classList.add("exit-active");
+    });
+
+    setTimeout(resolve, animationDelay);
   });
 }
 
-/* ===== Animation ===== */
+/* ===== Step Runner ===== */
 
 async function runSteps(steps) {
+  if (isAnimating) return;
   isAnimating = true;
 
   for (const step of steps) {
     if (step.type === "log") log(step.text);
     if (step.type === "highlight") render(step.index);
+    if (step.type === "preview") {
+      previewValue = step.value;
+      render();
+    }
+    if (step.type === "clear-preview") {
+      previewValue = null;
+      render();
+    }
     if (step.type === "mutate") {
       step.action();
       render();
     }
+    if (step.type === "animate-out") {
+      await animateOut(step.index);
+    }
+
     await sleep(animationDelay);
+    enteringIndex = null;
   }
 
   isAnimating = false;
@@ -81,27 +132,31 @@ async function runSteps(steps) {
 
 /* ===== Create ===== */
 
-async function handleCreate() {
-  const value = Number(valueInput.value);
-  if (isNaN(value)) return;
-
+function createFromList() {
   clearLog();
-  await runSteps([
-    {
-      type: "log",
-      text: mode === "stack"
-        ? `Add ${value} to stack`
-        : `Add ${value} to queue`
-    },
-    {
-      type: "mutate",
-      action: () => items.push(value)
-    }
-  ]);
+  previewValue = null;
+  enteringIndex = null;
+
+  const values = listInput.value
+    .split(",")
+    .map(v => Number(v.trim()))
+    .filter(v => !isNaN(v));
+
+  if (values.length === 0) {
+    log("Invalid list input");
+    return;
+  }
+
+  items = values;
+  render();
+  log(`Created structure with values: ${values.join(", ")}`);
 }
 
 function createRandom() {
   clearLog();
+  previewValue = null;
+  enteringIndex = null;
+
   items = Array.from({ length: 5 }, () =>
     Math.floor(Math.random() * 90) + 10
   );
@@ -148,7 +203,24 @@ async function peekBack() {
 /* ===== Stack ===== */
 
 async function handlePush() {
-  await handleCreate();
+  const value = Number(stackValueInput.value);
+  if (isNaN(value)) return;
+
+  clearLog();
+
+  await runSteps([
+    { type: "log", text: `Preview push ${value}` },
+    { type: "preview", value },
+    { type: "log", text: `Push ${value} to stack` },
+    { type: "clear-preview" },
+    {
+      type: "mutate",
+      action: () => {
+        items.push(value);
+        enteringIndex = items.length - 1;
+      }
+    }
+  ]);
 }
 
 async function handlePop() {
@@ -160,17 +232,32 @@ async function handlePop() {
   await runSteps([
     { type: "highlight", index: idx },
     { type: "log", text: `Pop ${items[idx]} from stack` },
-    {
-      type: "mutate",
-      action: () => items.pop()
-    }
+    { type: "animate-out", index: idx },
+    { type: "mutate", action: () => items.pop() }
   ]);
 }
 
 /* ===== Queue ===== */
 
 async function handleEnqueue() {
-  await handleCreate();
+  const value = Number(queueValueInput.value);
+  if (isNaN(value)) return;
+
+  clearLog();
+
+  await runSteps([
+    { type: "log", text: `Preview enqueue ${value}` },
+    { type: "preview", value },
+    { type: "log", text: `Enqueue ${value} to queue` },
+    { type: "clear-preview" },
+    {
+      type: "mutate",
+      action: () => {
+        items.push(value);
+        enteringIndex = items.length - 1;
+      }
+    }
+  ]);
 }
 
 async function handleDequeue() {
@@ -181,17 +268,19 @@ async function handleDequeue() {
   await runSteps([
     { type: "highlight", index: 0 },
     { type: "log", text: `Dequeue ${items[0]} from queue` },
-    {
-      type: "mutate",
-      action: () => items.shift()
-    }
+    { type: "animate-out", index: 0 },
+    { type: "mutate", action: () => items.shift() }
   ]);
 }
 
 /* ===== Clear ===== */
 
 function clearAll() {
+  if (isAnimating) return;
+  
   items = [];
+  previewValue = null;
+  enteringIndex = null;
   clearLog();
   render();
 }

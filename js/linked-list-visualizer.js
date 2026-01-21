@@ -58,6 +58,7 @@ function clearLog() {
 ========================= */
 
 function switchListType() {
+  if (isAnimating) return;
   listType = document.getElementById("listType").value;
   clearAll();
   log(`Switched to ${listType} linked list`);
@@ -78,19 +79,51 @@ function toggleRemoveIndex() {
 }
 
 /* =========================
+   AUTO SCROLL
+========================= */
+
+function scrollToNode(el) {
+  if (!el) return;
+  el.scrollIntoView({
+    behavior: "smooth",
+    inline: "center",
+    block: "nearest"
+  });
+}
+
+/* =========================
    RENDERING
 ========================= */
 
 function renderList(activeNode = null) {
   container.innerHTML = "";
   let curr = head;
+  let index = 0;
 
   while (curr) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "node-wrapper";
+
     const node = document.createElement("div");
     node.className = "node";
 
     if (curr === activeNode) {
       node.classList.add("traversing");
+      setTimeout(() => scrollToNode(wrapper), 50);
+    }
+
+    if (index === 0) {
+      const headLabel = document.createElement("div");
+      headLabel.className = "node-label head";
+      headLabel.textContent = "HEAD";
+      wrapper.appendChild(headLabel);
+    }
+
+    if (!curr.next) {
+      const tailLabel = document.createElement("div");
+      tailLabel.className = "node-label tail";
+      tailLabel.textContent = "TAIL";
+      wrapper.appendChild(tailLabel);
     }
 
     node.innerHTML =
@@ -105,7 +138,8 @@ function renderList(activeNode = null) {
           <div class="node-next">next</div>
         `;
 
-    container.appendChild(node);
+    wrapper.appendChild(node);
+    container.appendChild(wrapper);
 
     if (curr.next) {
       const arrow = document.createElement("div");
@@ -115,6 +149,7 @@ function renderList(activeNode = null) {
     }
 
     curr = curr.next;
+    index++;
   }
 
   if (!head) {
@@ -140,7 +175,7 @@ function getNodeAt(index) {
 }
 
 /* =========================
-   ANIMATION ENGINE (STABLE)
+   ANIMATION ENGINE
 ========================= */
 
 async function runSteps(steps) {
@@ -203,10 +238,7 @@ async function insertTail(value) {
 
   if (!head) {
     steps.push({ type: "log", text: "List empty, node becomes head" });
-    steps.push({
-      type: "mutate",
-      action: () => (head = node)
-    });
+    steps.push({ type: "mutate", action: () => (head = node) });
     await runSteps(steps);
     return;
   }
@@ -447,6 +479,10 @@ function addRandomList() {
 }
 
 function clearAll() {
+  
+  if (isAnimating) return;
+
+
   head = null;
   clearLog();
   renderList();
