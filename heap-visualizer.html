@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Binary Heap Visualizer</title>
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Heap-specific styles -->
+  <link rel="stylesheet" href="css/heap.css" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="concepts.html">Concepts</a>
+  <a href="array-visualizer.html">Array</a>
+  <a href="linked-list-visualizer.html">Linked List</a>
+  <a href="stack-queue-visualizer.html">Stack & Queue</a>
+  <a href="tree-visualizer.html">Tree</a>
+  <a href="heap-visualizer.html">Heap</a>
+</nav>
+
+<section class="visualizer-page">
+
+  <!-- MODE -->
+  <div class="command">
+    <span class="cmd-label">Heap Type</span>
+    <select id="heapMode">
+      <option value="min">Min Heap</option>
+      <option value="max">Max Heap</option>
+    </select>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <div class="command">
+      <span class="cmd-label">Insert</span>
+      <input type="number" id="heapInput" placeholder="value" />
+      <button onclick="handleInsert()">Insert</button>
+      <button onclick="handleInsertRandom()">Random</button>
+    </div>
+
+    <div class="command">
+      <span class="cmd-label">Build Heap</span>
+      <input
+        type="text"
+        id="arrayInput"
+        placeholder="e.g. 5, 3, 8, 1, 6"
+      />
+      <button onclick="handleBuildArray()">Build</button>
+      <button onclick="handleBuildRandom()">Random</button>
+      
+    </div>
+
+    <div class="command">
+      <button onclick="handlePeek()">Peek</button>
+      <button onclick="handlePop()">Pop Root</button>
+    </div>
+
+    <div class="command">
+      <span class="cmd-label">Sort</span>
+      <button onclick="handleHeapSort()">Heap Sort</button>
+    </div>
+
+    <div class="command danger">
+      <span class="cmd-label">Clear</span>
+      <button onclick="clearHeap()">Empty</button>
+    </div>
+  </div>
+
+  <!-- SPEED -->
+  <div class="speed-row">
+    <span class="speed-label">Animation Speed</span>
+    <span class="speed-text">Slow</span>
+    <input type="range" id="speedSlider" min="50" max="200" value="120" />
+    <span class="speed-text">Fast</span>
+  </div>
+  
+  <!-- HEAP TREE VIEW -->
+  <div class="structure-wrapper">
+    <svg id="heapCanvas"></svg>
+  </div>
+
+  <!-- ARRAY VIEW -->
+  <div class="heap-array-wrapper">
+    <h4>Heap Array</h4>
+    <div id="heapArray" class="heap-array"></div>
+  </div>
+
+  <!-- LOG -->
+  <ul id="explanationPanel" class="explanation-list"></ul>
+
+</section>
+
+<script src="js/heap-visualizer.js"></script>
+</body>
+</html>
